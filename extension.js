@@ -11,6 +11,7 @@ const rpc = new RPC.Client({
 const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 rpc.on("ready", () => {
 	rpc.setActivity({
+		largeImageKey: "idle",
 		details: "Working on something",
 		state: "instagram.com/rumenblajev_ 🖤",
 		startTimestamp: new Date().getTime()
@@ -32,8 +33,33 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let StartPresenceCommand = vscode.commands.registerCommand('discord-rich-presence.StartPresenceCommand', async function () {
+	// let StartPresenceCommand = vscode.commands.registerCommand('discord-rich-presence.StartPresenceCommand', async function () {
+	// 	rpc.destroy();
+	// 	// The code you place here will be executed every time your command is executed
+	// 	// Display a message box to the use
+	// 	try {
+			
+	// 		await rpc.login({
+	// 			clientId: "859383569809014806"
+	// 		})
+	// 		statusBarItem.tooltip = "Your VS Code status is currently present and being shown in Discord"
+	// 		statusBarItem.text = "Connected to Discord 👌"
+	// 		statusBarItem.show()
+	// 		vscode.window.showInformationMessage(`Connected to Discord`)
+	// 		vscode.window.showInformationMessage(`Logged in as ${rpc.user.username}#${rpc.user.discriminator}`)
+	// 	} 
+	// 	catch(e) {
+	// 		rpc.destroy()
+	// 		statusBarItem.tooltip = "Your VS Code status is currently not present and not being shown in Discord"
+	// 		statusBarItem.text = "Couldn't connect to Discord 😢"
+	// 		statusBarItem.show()
+	// 		vscode.window.showErrorMessage("Couldn't connect to Discord")
+	// 	}
+	// });
+
+	context.subscriptions.push(vscode.commands.registerCommand('discord-rich-presence.StartPresenceCommand', async function () {
 		rpc.destroy();
+		statusBarItem.show()
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the use
 		try {
@@ -54,9 +80,8 @@ function activate(context) {
 			statusBarItem.show()
 			vscode.window.showErrorMessage("Couldn't connect to Discord")
 		}
-	});
-
-	context.subscriptions.push(StartPresenceCommand);
+	}));
+	vscode.commands.executeCommand('discord-rich-presence.StartPresenceCommand')
 
 }
 

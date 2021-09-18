@@ -2,7 +2,13 @@
 	"name": "discord-rich-presence",
 	"displayName": "Discord Rich Presence",
 	"description": "",
-	"version": "0.0.1",
+	"publisher": "rumenblajev",
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rumenblajev/discordrpc-vscode.git"
+	  },
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -10,14 +16,15 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:discord-rich-presence.StartPresenceCommand"
+		"onCommand:discord-rich-presence.StartPresenceCommand",
+		"onStartupFinished"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "discord-rich-presence.StartPresenceCommand",
-				"title": "Start Presence"
+				"title": "Enable Presence"
 			}
 		]
 	},
