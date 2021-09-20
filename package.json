@@ -17,7 +17,7 @@
 	],
 	"activationEvents": [
 		"onCommand:discord-rich-presence.StartPresenceCommand",
-		"onStartupFinished"
+		"*"
 	],
 	"main": "./extension.js",
 	"contributes": {
