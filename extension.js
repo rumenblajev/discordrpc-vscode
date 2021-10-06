@@ -11,7 +11,7 @@ rpc.on("ready", () => {
 	rpc.setActivity({
 		largeImageKey: "idle",
 		details: "Working on something",
-		state: "instagram.com/rumenblajev_ 🖤",
+		state: "Do not disturb me :)",
 		startTimestamp: startTime
 	})
 });
@@ -31,7 +31,7 @@ function activate(context) {
 			})
 			rpcOn = true;
 			statusBarItem.tooltip = "Your VS Code status is currently present and being shown in Discord"
-			statusBarItem.text = "Connected to Discord 👌"
+			statusBarItem.text = "Connected👌"
 			statusBarItem.show()
 			// vscode.window.showInformationMessage(`Connected to Discord`)
 			// vscode.window.showInformationMessage(`Logged in as ${rpc.user.username}#${rpc.user.discriminator}`)
